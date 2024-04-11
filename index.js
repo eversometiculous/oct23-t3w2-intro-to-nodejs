@@ -4,6 +4,7 @@ require('dotenv').config(); // one liner
 // const dotenv = require('dotenv');
 // dotenv.config();
 const pokemonPrinterFile = require("./pokemonPrinter");
+// const pokemonNameFromNumber = require("./pokemonPrinter");
 
 console.log(process.env.ENVIRONMENT_MESSAGE);
 
@@ -34,6 +35,16 @@ do {
 
     if (Number.isNaN(n)) {
         throw new Error("User did not enter a number!");
+    }
+
+    // Give number to pokemon package and get result
+
+    try {
+        let pokemonName = pokemonPrinterFile.pokemonNameFromNumber(n);
+
+        console.log(`Your Pokemon is ${pokemonName}! How exciting!`);
+    } catch (error) {
+        console.log("Try a number between 1 and 1025!");
     }
  
     console.log("You entered " + n);
